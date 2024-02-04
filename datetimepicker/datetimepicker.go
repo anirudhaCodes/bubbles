@@ -2,10 +2,11 @@ package datetimepicker
 
 import (
 	"fmt"
+	"time"
+
 	"github.com/charmbracelet/bubbles/key"
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
-	"time"
 )
 
 // KeyMap is the key bindings for different actions within the datetimepicker.
@@ -68,11 +69,9 @@ func New() Model {
 // Update is the Bubble Tea update loop.
 func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	switch msg := msg.(type) {
-
 	case tea.KeyMsg:
 
 		switch {
-
 		// case to exit the program.
 		case key.Matches(msg, m.KeyMap.Quit):
 			return m, tea.Quit
@@ -139,7 +138,6 @@ func (m Model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 
 // View renders the date input in its current state.
 func (m Model) View() string {
-
 	// Customize styles based on the current position
 	var (
 		dayStyle    = m.TextStyle
@@ -191,6 +189,7 @@ func (m Model) Value() string {
 	return m.Date.Format("02 January 2006 03:04 PM")
 }
 
+// bubbletea Init function
 func (m Model) Init() tea.Cmd {
 	return nil
 }
